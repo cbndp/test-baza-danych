@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baza Danych Dziedzictwa Matieralnego i Dokumentacji Krzyżaków</title>
+
+    <!-- Leaflet Styles -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <style>
+        /* Main layout: Sidebar + Map */
+        body {
+            display: flex;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .sidebar {
+            width: 320px;  /* Sidebar width */
+            background: #f8f9fa;
+            padding: 15px;
+            overflow-y: auto;
+            border-right: 2px solid #ccc;
+        }
+        .sidebar h2 {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 10px;
+            padding: 0 10px;
+        }
+        .map-container {
+            flex-grow: 1; /* Expands to take remaining space */
+            position: relative;
+        }
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+        
+        /* Style search bars */
+        .input-box {
+            width: 90%; /* ✅ Ensures full width inside the sidebar */
+            max-width: 90%; /* ✅ Prevents touching the sidebar edge */
+            padding: 8px;
+            margin: 10px auto; /* Centers elements */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            display: block; /* ✅ Makes sure all align correctly */
+        }        
+        #searchResults {
+            list-style: none;
+            padding: 0;
+            margin: 0 auto;
+            width: 90%;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: none;
+        }
+        #searchResults li {
+            padding: 8px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+        }
+        #searchResults li:hover {
+            background: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar with search filters -->
+    <div class="sidebar">
+        <h2>Pokrzyżackie Dziedzictwo (faza 1)</h2>
+        <h3>Wyszukiwanie miejsc</h3>
+        
+        <!-- Search by place name -->
+        <input type="text" id="searchBox" class="input-box" placeholder="Wyszukiwanie miejsca..." onkeyup="searchPlaces()" onkeypress="handleEnter(event)" />
+        <ul id="searchResults"></ul>
+
+        <!-- Search by historical region -->
+        <h3>Filtruj (region historyczny)</h3>
+        <select id="regionDropdown" class="input-box" placeholder="Filtruj regionu historycznego" onchange="filterByRegion()">
+            <option value="">-- Wybór regionu historycznego --</option>
+        </select>
+
+        <!-- Search by modern region -->
+        <h3>Filtruj (region region nowoczesny) </h3>
+        <select id="modernRegionDropdown" class="input-box" onchange="filterByModernRegion()">
+            <option value="">-- Wybór regionu --</option>
+        </select>
+    </div>
+
+    <!-- Map container -->
+    <div class="map-container">
+        <div id="map"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
