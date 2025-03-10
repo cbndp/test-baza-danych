@@ -9,7 +9,7 @@ app.use(cors()); // Enable CORS for frontend access
 const db = mysql.createConnection({
     host: "localhost",
     user: "root", // Change if needed
-    password: "mzm1309#", // If you set a MySQL password, enter it here
+    password: "", // If you set a MySQL password, enter it here
     database: "cbndp_faza1"
 });
 
