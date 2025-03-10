@@ -7,7 +7,7 @@
 ## Instalacja:
 1. **Sklonuj repozytorium**:
    ```sh
-   git clone https://github.com/twoj-username/web-app-test.git
+   git clone https://github.com/twoj-username/test-baza-danych.git
 2. Przejdż do folderu projecktu:
    `cd test-baza-danych`
 
